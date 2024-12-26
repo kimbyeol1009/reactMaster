@@ -14,6 +14,12 @@ function App() {
         <h4>reactLogo</h4>
       </div>
     <div className="list">
+      <button onClick={()=>{setContent(content.sort((a, c) => a.localeCompare(c)))}}>가나다순정렬</button>
+      <button onClick={()=>{
+          let copy = [...content];
+          copy[0] = '여자코트 추천';
+          setContent(copy);
+        }}>button</button>
       <h4>{content[0]}<span onClick={()=>{likes(like+1)}}>❤️</span> {like} </h4>
       <p>2월 17일 발행</p>
     </div>
