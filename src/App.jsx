@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
-  const [글제목,b]=useState('여자 코트 추천');
+  const [글제목,글제목변경]=useState('여자 코트 추천');
   const [content, setContent] = useState(['남자코트 추천','강남 우동맛집','파이썬독학']);
   let[like, likes]=useState([0,0,0]);
   let [num, nums] = useState(0);
