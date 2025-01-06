@@ -1,7 +1,5 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -67,8 +65,12 @@ function App() {
               }}>2월 17일 발행</p>
               <button onClick={()=>{
                 setContent(content.filter((_,index) => index !== i))
-                likes(like.filter((_,index)=>index!==i))
+                // likes(like.filter((_,index)=>index!==i))
+                let copy = [...like];
+                copy.splice(i,1);
+                글제목변경(copy);
               }}>삭제</button>
+          
             </div>
           )
         })
@@ -76,6 +78,7 @@ function App() {
       <input onChange={
       (e)=>{입력값변경(e.target.value);
       }}></input>
+      
       <button onClick={()=>{
         setContent([입력값].concat(content));
         likes([0, ...like]);
@@ -85,7 +88,9 @@ function App() {
       {
         modal == true ? <Modal content={content} 글제목={글제목} setContent={setContent} num={num}/> : null
       }
+      {/* <Modal2></Modal2> */}
   </div>
+  
   )
 }
 
@@ -106,4 +111,26 @@ function Modal(props){
     </div>
   )
 }
+
+//아래는 class 컴포넌트 생성 방법입니다. 옛 틀 react 문법이지요.
+// class Modal2 extends React.Component {
+//   constructor(){
+//     super();
+//     this.state = { 
+//       name : '김별',
+//       age : 20
+//      }
+//   }
+//   render(){
+//     return(
+//       <div>안녕{this.state.age}
+//       <button onClick = {()=>{
+//         this.setState({age : 21})
+//       }}>버튼</button>
+      
+//       </div>
+      
+//     )
+//   }
+// }
 export default App
