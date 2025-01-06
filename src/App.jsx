@@ -11,6 +11,8 @@ function App() {
   let [num, nums] = useState(0);
 
   let [modal, setModal] = useState('false');
+
+  let [입력값, 입력값변경] = useState('');
   
   return (
     <div>
@@ -63,17 +65,30 @@ function App() {
                 setModal(!modal);
                 nums(i);
               }}>2월 17일 발행</p>
+              <button onClick={()=>{
+                setContent(content.filter((_,index) => index !== i))
+                likes(like.filter((_,index)=>index!==i))
+              }}>삭제</button>
             </div>
           )
         })
       }
-      
+      <input onChange={
+      (e)=>{입력값변경(e.target.value);
+      }}></input>
+      <button onClick={()=>{
+        setContent([입력값].concat(content));
+        likes([0, ...like]);
+        입력값변경('');
+        
+        }}>글발행</button>
       {
         modal == true ? <Modal content={content} 글제목={글제목} setContent={setContent} num={num}/> : null
       }
   </div>
   )
 }
+
 
 function Modal(props){
   return(
